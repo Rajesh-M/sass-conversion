@@ -1,6 +1,5 @@
 // --------------- MEDIA QUERIES ---------------
 
-
 $mobile-width: 701px;
 $tablet-width: 901px;
 $desktop-width: 1401px;
@@ -17,7 +16,6 @@ $desktop-width: 1401px;
     @content;
   }
 }
-
 
 @mixin mobile {
   @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {

@@ -11,8 +11,7 @@
 }
 
 
-
-// ----------- COLUMN POSITIONING ------------
+// ----------- COLUMN POSITIONING ----------
 
 @mixin colPosition($total_cols, $spacing, $width){
   float: left;
@@ -23,8 +22,7 @@
   }
 }
 
-
-// ----------- MIXIN FA-LG ---------------
+// ------------- MIXIN FA-LG ---------------
 
 @mixin fa-lg($color){
     display:inline;
@@ -36,13 +34,14 @@
 }
 
 // ---------- MIXIN BG-STYLES ---------------
+
 @mixin bg-styles($bg-color, $color){
 	background-color: $bg-color;
 	color: $color;
 }
 
-
 // ----------- NAV POSITION ----------------
+
 @mixin nav-position{
 	position: static;
 	clear:both;

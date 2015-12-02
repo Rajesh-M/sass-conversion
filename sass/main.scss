@@ -46,6 +46,28 @@ ul {
               LAYOUT
 ***********************************************/
 
+.header-styles{
+  color: $dark-brown;
+  letter-spacing: 0.1rem;
+  i.fa-lg {
+    display: block;
+    width: 25%;
+    float: left;
+    font-size: 7rem;
+    line-height: 12.7936rem;
+    color: $light-brown;
+    ~ span {
+      float: right;
+      width: 75%;
+      font-size: 3.998rem;
+      /**
+      2 lines of 3.998 * 1.6 = 12.7936
+      **/
+      padding-left: 1rem;
+      text-align: right;
+    }
+  }
+}
 
 .bg-header {
   background-color: $bg-color;
@@ -164,26 +186,7 @@ header {
     }
   }
   h1 {
-    color: $dark-brown;
-    letter-spacing: 0.1rem;
-    i.fa-lg {
-      display: block;
-      width: 25%;
-      float: left;
-      font-size: 7rem;
-      line-height: 12.7936rem;
-      color: $light-brown;
-      ~ span {
-        float: right;
-        width: 75%;
-        font-size: 3.998rem;
-        /**
-        2 lines of 3.998 * 1.6 = 12.7936
-        **/
-        padding-left: 1rem;
-        text-align: right;
-      }
-    }
+	  @extend .header-styles;
   }
 }
 
@@ -192,26 +195,7 @@ header {
 ***********************************************/
 
 header h1 {
-  color: $dark-brown;
-  letter-spacing: 0.1rem;
-  i.fa-lg {
-    display: block;
-    width: 25%;
-    float: left;
-    font-size: 7rem;
-    line-height: 12.7936rem;
-    color: $light-brown;
-    ~ span {
-      float: right;
-      width: 75%;
-      font-size: 3.998rem;
-      /**
-      2 lines of 3.998 * 1.6 = 12.7936
-      **/
-      padding-left: 1rem;
-      text-align: right;
-    }
-  }
+	@extend .header-styles;
 }
 
 .focal {
@@ -668,15 +652,12 @@ footer{
 
 .col-4{
     @include mobile{
-		float:left;
 		@include colPosition(4, 0%, 200%);
     }
     @include tablet{
-		float:left;
 		@include colPosition(4, 4%, 100%);
     }
     @include desktop{
-		float:left;
 		@include colPosition(4, 4%, 100%);
     }
 }
@@ -684,11 +665,9 @@ footer{
 
 .col-3{
     @include tablet{
-		float:left;
 		@include colPosition(3, 5%, 100%);
     }
     @include desktop{
-		float:left;
 		@include colPosition(3, 5%, 100%);
     }
 }
