@@ -71,23 +71,19 @@ ul {
 }
 
 .bg-focal {
-  background-color: $light-brown;
-  color: $dark-brown;
+  @include bg-styles($light-brown, $dark-brown);
 }
 
 .bg-content1 {
-  background-color: $bg-color;
-  color: $dark-grey;
+  @include bg-styles($bg-color, $dark-grey);
 }
 
 .bg-content2 {
-  background-color: $light-blue;
-  color: $dark-blue;
+  @include bg-styles($light-blue, $dark-blue);
 }
 
 .bg-footer {
-  background-color: $bg-color;
-  color: $light-grey;
+  @include bg-styles($bg-color, $light-grey);
 }
 
 header {
@@ -113,6 +109,7 @@ section {
     width: 400px;
     /* default */
     margin: 0 auto;
+
   }
   &.content1, &.content2 {
     padding: 2rem 0;
@@ -152,7 +149,7 @@ header {
       display: block;
       text-align: center;
       text-decoration: none;
-      color: #222;
+      color: $dark-grey;
       font-size: 1.414rem;
       letter-spacing: 0.25rem;
       border: 1px solid $light-grey;
@@ -292,349 +289,406 @@ footer {
 }
 
 
-
-
 /***********************************************
-                MEDIA QUERIES
+              MEDIA QUERIES
 ***********************************************/
 
-@media all and (min-width: 701px) and (max-width: 900px) {
-  header {
-    width: 700px;
-    margin: 0 auto;
-    min-height: 8rem;
-    h1 {
-      width: 100%;
-      color: #7C593C;
-    }
-    &:before, &:after {
-      width: 230px;
-    }
-    h1 i.fa-lg {
-      display: inline;
-      color: #7C593C;
-      vertical-align: baseline;
-      float: none;
-      font-size: 4rem;
-      line-height: 6.3968rem;
-      ~ span {
-        float: none;
-        letter-spacing: 0.25rem;
-        font-size: 3.998rem;
-        /**
-        1 lines of 3.998 * 1.6 = 6.3968
-        **/
-        text-align: left;
-      }
-    }
-    nav {
-      position: static;
-      clear: both;
-      width: 100%;
-      padding: 0;
-      > ul > li {
-        width: 20%;
-        float: left;
-        > a {
-          font-size: 1rem;
-          line-height: 2rem;
-          min-height: 6rem;
-          border: none;
-          border-left: 1px solid #d4d4d4;
-          padding: 1.0rem;
-          background-color: #fff;
-          &:last-child {
-            border-right: 1px solid #d4d4d4;
-          }
+header{
+    @include mobile{
+		width: 700px;
+		margin: 0 auto;
+		min-height: 8rem;
+	}
+
+    @include tablet{
+		width: 900px;
+		margin: 0 auto;
+	}
+
+    @include desktop{
+		width: 1400px;
+		margin:0 auto;
+	}
+
+    h1{
+        @include mobile{
+            width: 100%;
+            color: $dark-brown;
+		}
+
+        @include tablet{
+            width: 100%;
+            color: $dark-blue;
+		}
+
+        @include desktop{
+            width: 100%;
+            color: $dark-brown;
+		}
+
+        i.fa-lg{
+            @include mobile{
+				@include fa-lg($dark-brown);
+            }
+
+			@include tablet{
+				@include fa-lg($dark-blue);
+			}
+
+			@include desktop{
+				@include fa-lg($dark-brown);
+			}
+
+
+            ~ span{
+				@include mobile{
+					float: none;
+					letter-spacing: 0.25rem;
+					font-size: 3.998rem;
+					text-align: left;
+				}
+				@include tablet{
+					float: none;
+					letter-spacing: 0.25rem;
+					font-size: 3.998rem;
+					text-align: left;
+				}
+				@include desktop{
+					float: none;
+					letter-spacing: 0.25rem;
+					font-size: 3.998rem;
+					text-align: left;
+				}
+             }
         }
-      }
     }
-  }
-  section {
-    &.focal, &.content1, &.content2 {
-      width: 700px;
-      margin: 0 auto;
+    &:before,
+    &:after{
+        @include mobile{
+            width:230px;
+		}
+        @include tablet{
+            width:300px;
+		}
+        @include desktop{
+            width:450px;
+		}
+
     }
-  }
-  footer {
-    width: 700px;
-    margin: 0 auto;
-  }
-  .col-4 {
-    width: 50%;
-    float: left;
-  }
-  section.content2 {
-    h4, li {
-      font-size: 1.414rem;
+    nav{
+        @include mobile{
+			@include nav-position;
+        }
+        @include tablet{
+      		@include nav-position;
+		}
+        @include desktop{
+			@include nav-position;
+		}
+        >ul{
+            >li{
+            @include mobile{
+                width:20%;
+                float: left;
+			}
+            @include tablet{
+                width:20%;
+                float: left;
+                background-color: $bg-color;
+			}
+            @include desktop{
+                width:20%;
+                float: left;
+                background-color: $bg-color;
+			}
+
+                >a{
+                     @include mobile{
+                        font-size: 1rem;
+                        line-height: 2rem;
+                        min-height: 6rem;
+                        border:none;
+                        border-left:1px solid $light-grey;
+                        padding:1.0rem;
+                        background-color: $bg-color;
+					 }
+                    @include tablet{
+                        font-size: 1rem;
+                        line-height: 2rem;
+                        min-height: 2rem;
+                        border:none;
+                        border-left:1px solid $light-grey;
+                        padding: 0 1.0rem;
+                        margin: 1.0rem 0;
+                        background-color: $bg-color;
+					}
+                    @include desktop{
+                        font-size: 1.414rem;
+                        line-height: 2rem;
+                        min-height: 2rem;
+                        border:none;
+                        border-left:1px solid $light-grey;
+                        padding:0 1.0rem;
+                        margin:1.0rem 0;
+                        background-color: $bg-color;
+					}
+
+                    &:last-child{
+                         @include mobile{
+                            border-right:1px solid $light-grey;
+						 }
+                        @include tablet{
+                            border-left:1px solid $light-grey;
+						}
+                        @include desktop{
+                            border-left:none;
+						}
+                    }
+
+                }
+            }
+        }
     }
-  }
-  footer {
-    .fa-circle {
-      color: #89C0C9;
-    }
-    .col-2:last-child {
-      unicode-bidi: bidi-override;
-      direction: rtl;
-    }
-    h4 {
-      &[lang=ar] {
-        display: block;
-      }
-      &[lang=de], &[lang=en], &[lang=ru] {
-        display: none;
-      }
-    }
-  }
 }
 
-@media all and (min-width: 901px) and (max-width: 1400px) {
-  header {
-    width: 900px;
-    margin: 0 auto;
-    &:before, &:after {
-      width: 300px;
+
+section.focal{
+    @include mobile{
+        width: 700px;
+        margin: 0 auto;
+	}
+    @include tablet{
+        width: 900px;
+        margin: 0 auto;
+	}
+    @include desktop{
+        width: 1400px;
+        margin: 0 auto;
+	}
+
+    h2{
+		@include tablet{
+			width: 600px;
+			margin: 0 auto;
+		}
+		@include desktop{
+			font-size: 3.998rem;
+			width: 600px;
+			margin: 0 auto;
+		}
     }
-    h1 {
-      width: 100%;
-      color: #3a5E63;
-      i.fa-lg {
-        display: inline;
-        color: #3a5E63;
-        vertical-align: baseline;
-        float: none;
-        font-size: 4rem;
-        line-height: 6.3968rem;
-        ~ span {
-          float: none;
-          letter-spacing: 0.25rem;
-          font-size: 3.998rem;
-          /**
-          1 lines of 3.998 * 1.6 = 6.3968
-          **/
-          text-align: left;
-        }
-      }
+    p.author{
+        @include tablet{
+            width: 600px;
+            margin: 0 auto;
+		}
+        @include desktop{
+            width: 600px;
+            margin: 0 auto;
+		}
     }
-    nav {
-      position: static;
-      clear: both;
-      width: 100%;
-      padding: 0;
-      > ul > li {
-        width: 20%;
-        float: left;
-        background-color: #fff;
-        > a {
-          font-size: 1rem;
-          line-height: 2rem;
-          min-height: 2rem;
-          border: none;
-          border-left: 1px solid #d4d4d4;
-          padding: 0 1.0rem;
-          margin: 1.0rem 0;
-          background-color: #fff;
-        }
-        &:first-child a {
-          border-left: none;
-        }
-      }
-    }
-  }
-  section {
-    &.focal, &.content1, &.content2 {
-      width: 900px;
-      margin: 0 auto;
-    }
-  }
-  footer {
-    width: 900px;
-    margin: 0 auto;
-  }
-  section.focal {
-    h2, p.author {
-      width: 600px;
-      margin: 0 auto;
-    }
-  }
-  .col-3 {
-    float: left;
-    width: 30%;
-    margin-left: 5%;
-    &:first-child {
-      margin-left: 0;
-    }
-  }
-  .col-4 {
-    width: 22%;
-    margin-left: 4%;
-    float: left;
-    &:first-child {
-      margin-left: 0;
-    }
-  }
-  section {
-    &.content1 h3 {
-      font-size: 1.999rem;
-      font-weight: 100;
-      .fa-2x {
-        font-size: 1.999rem;
-        padding-right: 1rem;
-      }
-    }
-    &.content2 {
-      h4, li {
-        font-size: 1.414rem;
-      }
-      p {
-        font-size: 1rem;
-        font-weight: 400;
-      }
-    }
-  }
-  footer {
-    .fa-circle {
-      color: #C9A689;
-    }
-    h4 {
-      &[lang=ru] {
-        display: block;
-      }
-      &[lang=de], &[lang=ar], &[lang=en] {
-        display: none;
-      }
-    }
-  }
 }
 
-@media all and (min-width: 1401px) {
-  header {
-    width: 1400px;
-    margin: 0 auto;
-    &:before, &:after {
-      width: 450px;
-    }
-    h1 {
-      width: 100%;
-      color: #7C593C;
-      i.fa-lg {
-        display: inline;
-        color: #7C593C;
-        vertical-align: baseline;
-        float: none;
-        font-size: 4rem;
-        line-height: 6.3968rem;
-        ~ span {
-          float: none;
-          letter-spacing: 0.25rem;
-          font-size: 3.998rem;
-          /**
-          1 lines of 3.998 * 1.6 = 6.3968
-          **/
-          text-align: left;
+section.content1{
+    @include mobile{
+        width: 700px;
+        margin: 0 auto;
+	}
+    @include tablet{
+        width: 900px;
+        margin: 0 auto;
+	}
+    @include desktop{
+        width: 1400px;
+        margin: 0 auto;
+	}
+    h3{
+        @include tablet{
+            font-size: 1.999rem;
+            font-weight: 100;
+		}
+         @include desktop{
+            font-size: 2.827rem;
+            font-weight: 100;
+		 }
+
+        .fa-2x{
+			@include tablet{
+				font-size: 1.999rem;
+				padding-right: 1rem;
+			}
+			@include desktop{
+				font-size: 2.827rem;
+				padding-right: 1rem;
+				vertical-align: middle;
+			}
         }
-      }
     }
-    nav {
-      position: static;
-      clear: both;
-      width: 100%;
-      padding: 0;
-      > ul > li {
-        width: 20%;
-        float: left;
-        background-color: #fff;
-        > a {
-          font-size: 1.414rem;
-          line-height: 2rem;
-          min-height: 2rem;
-          border: none;
-          border-left: 1px solid #d4d4d4;
-          padding: 0 1.0rem;
-          margin: 1.0rem 0;
-          background-color: #fff;
-        }
-        &:first-child a {
-          border-left: none;
-        }
-      }
-    }
-  }
-  section {
-    &.focal, &.content1, &.content2 {
-      width: 1400px;
-      margin: 0 auto;
-    }
-  }
-  footer {
-    width: 1400px;
-    margin: 0 auto;
-  }
-  section.focal {
-    h2 {
-      font-size: 3.998rem;
-      width: 600px;
-      margin: 0 auto;
-    }
-    p.author {
-      width: 600px;
-      margin: 0 auto;
-    }
-  }
-  .col-3 {
-    float: left;
-    width: 30%;
-    margin-left: 5%;
-    &:first-child {
-      margin-left: 0;
-    }
-  }
-  .col-4 {
-    width: 22%;
-    margin-left: 4%;
-    float: left;
-    &:first-child {
-      margin-left: 0;
-    }
-  }
-  section {
-    &.content1 h3 {
-      font-size: 2.827rem;
-      font-weight: 100;
-      .fa-2x {
-        font-size: 2.827rem;
-        padding-right: 1rem;
-        vertical-align: middle;
-      }
-    }
-    &.content2 {
-      h4, li {
-        font-size: 1.999rem;
-      }
-      p {
+}
+
+section.content2{
+    @include mobile{
+        width: 700px;
+        margin: 0 auto;
+	}
+    @include tablet{
+        width: 900px;
+        margin: 0 auto;
+	}
+    @include desktop{
+        width: 1400px;
+        margin: 0 auto;
+	}
+    h4{
+    @include mobile{
         font-size: 1.414rem;
-        font-weight: 400;
-      }
+	}
+    @include tablet{
+        font-size: 1.414rem;
+	}
+    @include desktop{
+        font-size: 1.999rem;
+	}
     }
-  }
-  footer {
-    p {
-      font-size: 1.414rem;
-      letter-spacing: 0.2rem;
-      &:last-child {
-        color: #d4d4d4;
-      }
+    li{
+        @include mobile{
+            font-size: 1.414rem;
+		}
+        @include tablet{
+            font-size: 1.414rem;
+		}
+        @include desktop{
+            font-size: 1.999rem;
+		}
     }
-    .fa-circle {
-      color: #89C0C9;
+    p{
+        @include tablet{
+            font-size: 1rem;
+            font-weight: 400;
+		}
+        @include desktop{
+            font-size: 1.414rem;
+            font-weight: 400;
+		}
     }
-    h4 {
-      &[lang=en] {
-        display: block;
-      }
-      &[lang=de], &[lang=ar], &[lang=ru] {
-        display: none;
-      }
+}
+
+
+footer{
+    @include mobile{
+        width: 700px;
+        margin: 0 auto;
+	}
+    @include tablet{
+        width: 900px;
+        margin: 0 auto;
+	}
+    @include desktop{
+        width: 1400px;
+        margin: 0 auto;
+	}
+
+    .fa-circle{
+        @include mobile{
+            color: $med-blue;
+		}
+        @include tablet{
+            color: $light-brown;
+		}
+        @include desktop{
+            color: $med-blue;
+		}
     }
-  }
+
+    p{
+    @include desktop{
+        font-size: 1.414rem;
+        letter-spacing: 0.2rem;
+	}
+    &:last-child{
+        @include desktop{
+            color: $light-grey;
+		}
+    }
+
+    }
+    .col-2{
+        &:last-child{
+            @include mobile{
+                unicode-bidi: bidi-override;
+                direction: rtl;
+			}
+        }
+    }
+
+    h4[lang=ar]{
+        @include mobile{
+           display:block;
+		}
+        @include tablet{
+            display:none;
+		}
+        @include desktop{
+            display:none;
+		}
+    }
+
+    h4[lang=de]{
+        @include mobile{
+            display:none;}
+        @include tablet{
+            display:none;}
+        @include desktop{
+            display:none;}
+    }
+    h4[lang=en]{
+        @include mobile{
+            display:none;
+		}
+        @include tablet{
+            display:none;
+		}
+        @include desktop{
+            display:block;
+		}
+    }
+    h4[lang=ru]{
+        @include mobile{
+            display:none;
+		}
+        @include tablet{
+            display:block;
+		}
+        @include desktop{
+            display:none;
+		}
+    }
+
+}
+
+.col-4{
+    @include mobile{
+		float:left;
+		@include colPosition(4, 0%, 200%);
+    }
+    @include tablet{
+		float:left;
+		@include colPosition(4, 4%, 100%);
+    }
+    @include desktop{
+		float:left;
+		@include colPosition(4, 4%, 100%);
+    }
+}
+
+
+.col-3{
+    @include tablet{
+		float:left;
+		@include colPosition(3, 5%, 100%);
+    }
+    @include desktop{
+		float:left;
+		@include colPosition(3, 5%, 100%);
+    }
 }

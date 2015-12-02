@@ -9,3 +9,43 @@
     	}
 	}
 }
+
+
+
+// ----------- COLUMN POSITIONING ------------
+
+@mixin colPosition($total_cols, $spacing, $width){
+  float: left;
+  width: ( $width - ( $spacing * ($total_cols - 1) ) ) / $total_cols;
+  margin-left: $spacing;
+  &:first-child{
+    margin-left: 0;
+  }
+}
+
+
+// ----------- MIXIN FA-LG ---------------
+
+@mixin fa-lg($color){
+    display:inline;
+    color: $color;
+    vertical-align:baseline;
+    float:none;
+    font-size: 4rem;
+    line-height: 6.3968rem;
+}
+
+// ---------- MIXIN BG-STYLES ---------------
+@mixin bg-styles($bg-color, $color){
+	background-color: $bg-color;
+	color: $color;
+}
+
+
+// ----------- NAV POSITION ----------------
+@mixin nav-position{
+	position: static;
+	clear:both;
+	width: 100%;
+	padding: 0;
+}
